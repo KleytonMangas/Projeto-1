@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Banco de Dados Local</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            text-align: center;
+            padding: 10px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Banco de Dados Local</h2>
+        <form id="dataForm">
+            <input type="text" id="name" placeholder="Nome" required>
+            <input type="text" id="email" placeholder="E-mail" required>
+            <button type="submit">Salvar</button>
+        </form>
+
+ <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody id="dataTable">
+                <!-- Os dados serão adicionados aqui dinamicamente -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const form = document.getElementById('dataForm');
+        const dataTable = document.getElementById('dataTable');
+
+        // Função para carregar dados do localStorage
+        function loadData() {
+            const data = JSON.parse(localStorage.getItem('database')) || [];
+            dataTable.innerHTML = '';
+            data.forEach((item, index) => {
+                const row = `
+                    <tr>
+                        <td>${item.name}</td>
+                        <td>${item.email}</td>
+                        <td><button onclick="deleteData(${index})">Excluir</button></td>
+                    </tr>
+                `;
+                dataTable.innerHTML += row;
+            });
+        }
+
+// Função para salvar dados no localStorage
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+
+    const data = JSON.parse(localStorage.getItem('database')) || [];
+    data.push({ name, email });
+    localStorage.setItem('database', JSON.stringify(data));
+
+    form.reset();
+    loadData();
+});
+
+// Função para excluir dados
+function deleteData(index) {
+    const data = JSON.parse(localStorage.getItem('database')) || [];
+    data.splice(index, 1);
+    localStorage.setItem('database', JSON.stringify(data));
+    loadData();
+}
+
+// Carrega os dados ao abrir a página
+loadData();
+    </script>
+</body>
+</html>
