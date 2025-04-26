@@ -98,16 +98,87 @@ label {
     </style>
 </head>
 <body>
-    <!-- Abas -->
-    <div class="tab-container">
-        <div class="tab active" onclick="showTabContent('cadastro-cliente')">Cadastro Paciente</div>
-        <div class="tab" onclick="showTabContent('agenda')">Agendar Paciente</div>
-        <div class="tab" onclick="showTabContent('clientes')">Paciente</div>
-        <div class="tab" onclick="showTabContent('usuarios')">Administradores e Usuários</div>
-    </div>
+    <body>
 
+        <!-- Abas -->
+        <div class="tab-container">
+            <div class="tab active" onclick="showTabContent('Inicio')">Início</div>
+            <div class="tab" onclick="showTabContent('cadastro-cliente')">Cadastro Paciente</div>
+            <div class="tab" onclick="showTabContent('agenda')">Agendar Paciente</div>
+            <div class="tab" onclick="showTabContent('clientes')">Pacientes</div>
+            <div class="tab" onclick="showTabContent('usuarios')">Administradores e Usuários</div>
+        </div>
+    
+        <!-- Conteúdo da Aba Inicio -->
+        <div id="Inicio" class="tab-content active">
+            <div class="container">
+                <h2>Calendário</h2>
+                <table>
+                    <thead>
+                        <tr>
+    <th>Dom</th>
+                            <th>Seg</th>
+                            <th>Ter</th>
+                            <th>Qua</th>
+                            <th>Qui</th>
+                            <th>Sex</th>
+                            <th>Sáb</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>9</td>
+                            <td>10</td>
+                            <td>11</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+    <td>13</td>
+                            <td>14</td>
+                            <td>15</td>
+                            <td>16</td>
+                            <td>17</td>
+                            <td>18</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>20</td>
+                            <td>21</td>
+                            <td>22</td>
+                            <td>23</td>
+                            <td>24</td>
+                            <td>25</td>
+                            <td>26</td>
+                        </tr>
+                        <tr>
+                            <td>27</td>
+                            <td>28</td>
+                            <td>29</td>
+                            <td>30</td>
+                            <td>31</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+    </tbody>
+                </table>
+            </div>
+        </div>
+    
+     
     <!-- Conteúdo da Aba Cadastro de Cliente -->
-    <div id="cadastro-cliente" class="tab-content active">
+    <div id="cadastro-cliente" class="tab-content">
         <div class="container">
             <h2>Cadastro Paciente</h2>
             <form action="/submit-form" method="POST">
@@ -139,7 +210,7 @@ label {
         </div>
     </div>
 
-    <!-- Conteúdo da Aba Agenda -->
+    <!-- Conteúdo da Aba Agendar -->
     <div id="agenda" class="tab-content">
         <div class="container">
             <h2>Agendar Paciente</h2>
@@ -156,7 +227,7 @@ label {
             </form>
         </div>
     </div>
-<!-- Conteúdo da Aba Clientes -->
+<!-- Conteúdo da Aba Paciente -->
     <div id="clientes" class="tab-content">
         <div class="container">
             <h2>Lista de Paciente</h2>
